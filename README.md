@@ -1,4 +1,4 @@
-# SquidBox Web Editor
+# Squidbox Web Editor
 
 React + TypeScript + Vite app for configuring and playing the SquidBox hardware over the Arduino Cloud Agent.
 
@@ -15,7 +15,7 @@ npm run lint
 npm run build && npm run preview
 ```
 
-## Connect to SquidBox from the Browser
+## Connect to Squidbox from the Browser
 
 1) Install the Arduino Cloud Agent: https://cloud.arduino.cc/download-agent/
 2) Add localhost origins to the agent config:
@@ -36,7 +36,7 @@ npm run build && npm run preview
    autostartMacOS = true
    ```
 3) Restart the Arduino Cloud Agent so the changes apply.
-4) Plug in the SquidBox via USB.
+4) Plug in the Squidbox via USB.
 5) Open the app (`npm run dev`) and reload until the port shows under “Connected Devices.” If prompted by Chrome, allow serial access.
 
 If the agent isn’t trusted yet, visit `https://localhost:8991/info` once to allow the local certificate, then reload the app.

@@ -68,8 +68,8 @@ function App() {
 
   return (
     <div className="h-screen flex flex-col">
-      <header className="bg-blue-200 text-center text-2xl border-b">
-        Squidbox
+      <header className="bg-primary text-primary-foreground text-center text-2xl border-b">
+        <a href="http://eamir.org" target="_blank">EAMIR</a> Squidbox Chord Editor
       </header>
       <main className="flex-1 flex flex-col">
         <TopPanel

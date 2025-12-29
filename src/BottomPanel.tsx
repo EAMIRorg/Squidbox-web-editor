@@ -357,9 +357,9 @@ const BottomPanel = ({
   }
 
   return (
-    <div className="m-4 grid grid-cols-3 grid-rows-[auto_1fr] gap-8">
+    <div className="m-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
       {/* Row 1, Column 1: Connect UI */}
-      <div className="flex flex-col items-center text-center gap-4">
+      <div className="flex flex-col items-center text-center gap-4 w-full">
         {shouldShowAgentDebug && (
           <div>
             <p>
@@ -442,6 +442,18 @@ const BottomPanel = ({
           </div>
         )}
 
+        <div className="w-full max-w-md">
+          <div className="grid w-full items-center gap-1.5">
+            <Label htmlFor="squidbox-config-import">Import Config to be Uploaded</Label>
+            <Input
+              id="squidbox-config-import"
+              type="file"
+              accept="application/json"
+              onChange={handleImportConfig}
+            />
+          </div>
+        </div>
+
         {shouldShowAgentDebug && (
           <div>
             <h2>Serial Monitor</h2>
@@ -480,8 +492,8 @@ const BottomPanel = ({
         </div>
       </div>
       {/* Row 1, Column 2: Squidbox Buttons */}
-      <div className="flex flex-col items-center justify-center">
-        <div className="flex gap-2">
+      <div className="flex flex-col items-center justify-center w-full">
+        <div className="flex flex-wrap justify-center gap-0">
           {buttonMappings.map((_, index) => {
             return (
               <SquidboxButton
@@ -499,45 +511,42 @@ const BottomPanel = ({
         </div>
       </div>
       {/* Row 1, Column 3: Config Actions */}
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h3 className="text-md font-medium">Config Tools</h3>
-        <div className="flex gap-4 items-end justify-center">
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="squidbox-config-import">Import Config</Label>
-            <Input
-              id="squidbox-config-import"
-              type="file"
-              accept="application/json"
-              onChange={handleImportConfig}
-            />
+      <div className="flex flex-col items-center justify-center gap-4 w-full max-w-2xl mx-auto">
+        <h3 className="text-md font-medium">Config Editor Tools</h3>
+        <div className="flex flex-col items-stretch gap-4 w-full">
+          <div className="flex flex-wrap gap-2 justify-center sm:justify-start lg:justify-center w-full max-w-[70%] mx-auto">
+            <div className="flex flex-col gap-2 w-full max-w-xs">
+              <Button variant="secondary" onClick={handleExportConfig}>
+                Export Config
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                <Button variant="secondary" className="sr-only">
+                  Share Config
+                </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem
+                    onClick={async () => await handleShareConfig("json")}
+                  >
+                    JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={async () => await handleShareConfig("url")}
+                  >
+                    URL
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button variant="destructive" onClick={handleResetConfig}>
+                Reset Config
+              </Button>
+            </div>
           </div>
-          <Button variant="secondary" onClick={handleExportConfig}>
-            Export Config
-          </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Button variant="secondary">Share Config</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem
-                onClick={async () => await handleShareConfig("json")}
-              >
-                JSON
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={async () => await handleShareConfig("url")}
-              >
-                URL
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <Button variant="destructive" onClick={handleResetConfig}>
-            Reset Config
-          </Button>
         </div>
       </div>
       {/* Row 2, Columns 1-3 merged: Piano and Config */}
-      <div className="col-span-3">
+      <div className="lg:col-span-3">
         <SoundfontProvider
           instrumentName={pianoConfig.instrumentName}
           hostname={soundfontHostname}

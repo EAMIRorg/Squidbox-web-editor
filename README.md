@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# SquidBox Web Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript + Vite app for configuring and playing the SquidBox hardware over the Arduino Cloud Agent.
 
-Currently, two official plugins are available:
+## Run Locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+# install
+npm install
+# start dev server (default http://localhost:5173/)
+npm run dev
+# lint (optional)
+npm run lint
+# build + preview (optional)
+npm run build && npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Connect to SquidBox from the Browser
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1) Install the Arduino Cloud Agent: https://cloud.arduino.cc/download-agent/
+2) Add localhost origins to the agent config:
+   - macOS: `$HOME/Library/Application Support/ArduinoCreateAgent/config.ini`
+   - Linux: `$XDG_CONFIG_HOME/ArduinoCreateAgent/config.ini` or `$HOME/.config/ArduinoCreateAgent/config.ini`
+   - Windows: `%AppData%\ArduinoCreateAgent\config.ini`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+   Replace contents with:
+   ```
+   gc = std
+   hostname = unknown-hostname
+   regex = usb|acm|com
+   v = true
+   appName = CreateAgent/Stable
+   updateUrl = https://downloads.arduino.cc/
+   origins = http://localhost:8000, https://localhost:8000, http://localhost:5173, https://localhost:5173, http://localhost:4173, https://localhost:4173, https://felixngfender.github.io/, https://eamirorg.github.io/squidbox-web-editor/
+   crashreport = true
+   autostartMacOS = true
+   ```
+3) Restart the Arduino Cloud Agent so the changes apply.
+4) Plug in the SquidBox via USB.
+5) Open the app (`npm run dev`) and reload until the port shows under “Connected Devices.” If prompted by Chrome, allow serial access.
+
+If the agent isn’t trusted yet, visit `https://localhost:8991/info` once to allow the local certificate, then reload the app.

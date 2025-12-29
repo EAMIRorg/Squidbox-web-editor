@@ -77,7 +77,7 @@ const SquidboxButton = ({
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="cursor-pointer"
+      className="cursor-pointer h-14 w-14 object-contain"
     />
   );
 };

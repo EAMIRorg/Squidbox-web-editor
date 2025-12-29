@@ -17,5 +17,6 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
   },
-  base: "/squidbox/",
+  // Set to your GitHub Pages repo name so assets resolve correctly there.
+  base: "/SquidBox-web-editor/",
 });

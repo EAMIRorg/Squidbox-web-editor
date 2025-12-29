@@ -40,3 +40,8 @@ npm run build && npm run preview
 5) Open the app (`npm run dev`) and reload until the port shows under “Connected Devices.” If prompted by Chrome, allow serial access.
 
 If the agent isn’t trusted yet, visit `https://localhost:8991/info` once to allow the local certificate, then reload the app.
+
+## Deploy to GitHub Pages
+
+- Rebuild locally to confirm: `npm run build && npm run preview`
+- Redeploy to GH Pages: `npm run deploy` (publishes `dist` to `gh-pages`)

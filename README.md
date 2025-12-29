@@ -31,7 +31,7 @@ npm run build && npm run preview
    v = true
    appName = CreateAgent/Stable
    updateUrl = https://downloads.arduino.cc/
-   origins = http://localhost:8000, https://localhost:8000, http://localhost:5173, https://localhost:5173, http://localhost:4173, https://localhost:4173, https://felixngfender.github.io/, https://eamirorg.github.io/squidbox-web-editor/
+   origins = http://localhost:8000, https://localhost:8000, http://localhost:5173, https://localhost:5173, http://localhost:4173, https://localhost:4173, https://eamirorg.github.io/SquidBox-web-editor/
    crashreport = true
    autostartMacOS = true
    ```

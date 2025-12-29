@@ -43,5 +43,6 @@ If the agent isn’t trusted yet, visit `https://localhost:8991/info` once to al
 
 ## Deploy to GitHub Pages
 
+- Build and depoly: `npm run build && npm run deploy`
 - Rebuild locally to confirm: `npm run build && npm run preview`
 - Redeploy to GH Pages: `npm run deploy` (publishes `dist` to `gh-pages`)

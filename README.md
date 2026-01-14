@@ -46,3 +46,9 @@ If the agent isn’t trusted yet, visit `https://localhost:8991/info` once to al
 - Build and depoly: `npm run build && npm run deploy`
 - Rebuild locally to confirm: `npm run build && npm run preview`
 - Redeploy to GH Pages: `npm run deploy` (publishes `dist` to `gh-pages`)
+
+## Contributing
+
+Navigate to the [CONTRIBUTING.md](./CONTRIBUTING.md) file for guidelines on how to contribute to the project.
+
+Music, audio, and other creative works produced using Squidbox are not considered Contributions and remain the sole property of their creators.
